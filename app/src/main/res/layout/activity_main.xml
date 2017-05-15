@@ -43,4 +43,34 @@
             android:layout_height="wrap_content"
             android:text="error"
             android:onClick="toastError"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="show"
+                android:onClick="show"
+                />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="success"
+                android:onClick="success"
+                />
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="error"
+                android:onClick="error"
+                />
+
+    </LinearLayout>
+
 </LinearLayout>

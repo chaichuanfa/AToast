@@ -1,5 +1,8 @@
 package com.felix.atoast.library;
 
+
+import com.felix.atoast.library.util.ToastUtils;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
@@ -16,13 +19,30 @@ import android.widget.Toast;
 
 @SuppressLint("InflateParams")
 public class AToast {
-    private static final @ColorInt int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
 
-    private static final @ColorInt int NORMAL_COLOR = Color.parseColor("#70000000");
-    private static final @ColorInt int ERROR_COLOR = Color.parseColor("#D50000");
-    private static final @ColorInt int INFO_COLOR = Color.parseColor("#3F51B5");
-    private static final @ColorInt int SUCCESS_COLOR = Color.parseColor("#388E3C");
-    private static final @ColorInt int WARNING_COLOR = Color.parseColor("#FFA900");
+    private static final
+    @ColorInt
+    int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
+
+    private static final
+    @ColorInt
+    int NORMAL_COLOR = Color.parseColor("#70000000");
+
+    private static final
+    @ColorInt
+    int ERROR_COLOR = Color.parseColor("#D50000");
+
+    private static final
+    @ColorInt
+    int INFO_COLOR = Color.parseColor("#3F51B5");
+
+    private static final
+    @ColorInt
+    int SUCCESS_COLOR = Color.parseColor("#388E3C");
+
+    private static final
+    @ColorInt
+    int WARNING_COLOR = Color.parseColor("#FFA900");
 
 
     private static Context mContext;
@@ -30,8 +50,12 @@ public class AToast {
     private AToast() {
     }
 
-    public static void onInit(Context context){
-        if(mContext == null) {
+    /**
+     * 在Application onCreate中初始化
+     * @param context
+     */
+    public static void onInit(Context context) {
+        if (mContext == null) {
             mContext = context.getApplicationContext();
         }
     }
@@ -53,12 +77,12 @@ public class AToast {
     }
 
     public static void normal(@NonNull String message, int duration,
-                               Drawable icon) {
+            Drawable icon) {
         normal(message, duration, icon, true);
     }
 
     public static void normal(@NonNull String message, int duration,
-                               Drawable icon, boolean withIcon) {
+            Drawable icon, boolean withIcon) {
         custom(message, icon, DEFAULT_TEXT_COLOR, duration, withIcon);
     }
 
@@ -75,7 +99,7 @@ public class AToast {
     }
 
     public static void warning(@NonNull String message, int duration, boolean withIcon) {
-        custom(message, ToastyUtils.getDrawable(mContext, R.drawable.ic_error_outline_white_48dp),
+        custom(message, ToastUtils.getDrawable(mContext, R.drawable.ic_error_outline_white_48dp),
                 DEFAULT_TEXT_COLOR, WARNING_COLOR, duration, withIcon, true);
     }
 
@@ -92,7 +116,7 @@ public class AToast {
     }
 
     public static void info(@NonNull String message, int duration, boolean withIcon) {
-        custom(message, ToastyUtils.getDrawable(mContext, R.drawable.ic_info_outline_white_48dp),
+        custom(message, ToastUtils.getDrawable(mContext, R.drawable.ic_info_outline_white_48dp),
                 DEFAULT_TEXT_COLOR, INFO_COLOR, duration, withIcon, true);
     }
 
@@ -109,7 +133,7 @@ public class AToast {
     }
 
     public static void success(@NonNull String message, int duration, boolean withIcon) {
-        custom(message, ToastyUtils.getDrawable(mContext, R.drawable.ic_check_white_48dp),
+        custom(message, ToastUtils.getDrawable(mContext, R.drawable.ic_check_white_48dp),
                 DEFAULT_TEXT_COLOR, SUCCESS_COLOR, duration, withIcon, true);
     }
 
@@ -126,44 +150,49 @@ public class AToast {
     }
 
     public static void error(@NonNull String message, int duration, boolean withIcon) {
-        custom(message, ToastyUtils.getDrawable(mContext, R.drawable.ic_clear_white_48dp),
+        custom(message, ToastUtils.getDrawable(mContext, R.drawable.ic_clear_white_48dp),
                 DEFAULT_TEXT_COLOR, ERROR_COLOR, duration, withIcon, true);
     }
 
     public static void custom(@NonNull String message, Drawable icon,
-                               @ColorInt int textColor, int duration, boolean withIcon) {
+            @ColorInt int textColor, int duration, boolean withIcon) {
         custom(message, icon, textColor, -1, duration, withIcon, false);
     }
 
     public static void custom(@NonNull String message, @DrawableRes int iconRes,
-                               @ColorInt int textColor, @ColorInt int tintColor, int duration,
-                               boolean withIcon, boolean shouldTint) {
-        custom(message, ToastyUtils.getDrawable(mContext, iconRes), textColor,
+            @ColorInt int textColor, @ColorInt int tintColor, int duration,
+            boolean withIcon, boolean shouldTint) {
+        custom(message, ToastUtils.getDrawable(mContext, iconRes), textColor,
                 tintColor, duration, withIcon, shouldTint);
     }
 
     public static void custom(@NonNull String message, Drawable icon,
-                               @ColorInt int textColor, @ColorInt int tintColor, int duration,
-                               boolean withIcon, boolean shouldTint) {
+            @ColorInt int textColor, @ColorInt int tintColor, int duration,
+            boolean withIcon, boolean shouldTint) {
         final Toast currentToast = new Toast(mContext);
-        final View toastLayout = ((LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+        final View toastLayout = ((LayoutInflater) mContext
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                 .inflate(R.layout.toast_layout, null);
         final ImageView toastIcon = (ImageView) toastLayout.findViewById(R.id.toast_icon);
         final TextView toastTextView = (TextView) toastLayout.findViewById(R.id.toast_text);
         Drawable drawableFrame;
 
-        if (shouldTint)
-            drawableFrame = ToastyUtils.getDrawableFrame(tintColor);
-        else
-            drawableFrame = ToastyUtils.getDrawableFrame(NORMAL_COLOR);
-        ToastyUtils.setBackground(toastLayout, drawableFrame);
+        if (shouldTint) {
+            drawableFrame = ToastUtils.getDrawableFrame(tintColor);
+        } else {
+            drawableFrame = ToastUtils.getDrawableFrame(NORMAL_COLOR);
+        }
+        ToastUtils.setBackground(toastLayout, drawableFrame);
 
         if (withIcon) {
-            if (icon == null)
-                throw new IllegalArgumentException("Avoid passing 'icon' as null if 'withIcon' is set to true");
-            ToastyUtils.setBackground(toastIcon, icon);
-        } else
+            if (icon == null) {
+                throw new IllegalArgumentException(
+                        "Avoid passing 'icon' as null if 'withIcon' is set to true");
+            }
+            ToastUtils.setBackground(toastIcon, icon);
+        } else {
             toastIcon.setVisibility(View.GONE);
+        }
 
         toastTextView.setTextColor(textColor);
         toastTextView.setText(message);
@@ -172,4 +201,17 @@ public class AToast {
         currentToast.setDuration(duration);
         currentToast.show();
     }
+
+    public static LoadToast loadToast(Context context, String loadText) {
+        LoadToast lt = new LoadToast(context);
+        lt.setText(loadText);
+        return lt;
+    }
+
+    public static LoadToast loadToast(Context context, @StringRes int textRes) {
+        LoadToast lt = new LoadToast(context);
+        lt.setText(mContext.getString(textRes));
+        return lt;
+    }
+
 }

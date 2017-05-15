@@ -1,4 +1,4 @@
-package com.felix.atoast.library;
+package com.felix.atoast.library.util;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -9,12 +9,12 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-final class ToastyUtils {
+public class ToastUtils {
 
-    private ToastyUtils() {
+    private ToastUtils() {
     }
 
-    static Drawable getDrawableFrame(@ColorInt int tintColor) {
+    public static Drawable getDrawableFrame(@ColorInt int tintColor) {
 
         GradientDrawable toastDrawable = new GradientDrawable();
         toastDrawable.setColor(tintColor);
@@ -22,7 +22,7 @@ final class ToastyUtils {
         return toastDrawable;
     }
 
-    static void setBackground(@NonNull View view, Drawable drawable) {
+    public static void setBackground(@NonNull View view, Drawable drawable) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             view.setBackground(drawable);
         } else {
@@ -30,7 +30,7 @@ final class ToastyUtils {
         }
     }
 
-    static Drawable getDrawable(@NonNull Context context, @DrawableRes int id) {
+    public static Drawable getDrawable(@NonNull Context context, @DrawableRes int id) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return context.getDrawable(id);
         } else {
