@@ -18,6 +18,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginRight="8dp"
+            android:scaleType="centerInside"
             android:layout_gravity="center_vertical"
             tools:src="@drawable/ic_error_outline_white_48dp"
             />
@@ -27,6 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:singleLine="true"
+            android:gravity="center"
             tools:text="error"
             />
 

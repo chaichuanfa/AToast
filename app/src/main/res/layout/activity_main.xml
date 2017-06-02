@@ -18,36 +18,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="normal"
-            android:onClick="toastNormal"/>
+            android:onClick="toastNormal"
+            />
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="warning"
-            android:onClick="toastWarn"/>
+            android:onClick="toastWarn"
+            android:layout_marginTop="4dp"
+            />
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="info"
-            android:onClick="toastInfo"/>
+            android:onClick="toastInfo"
+            android:layout_marginTop="4dp"
+            />
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="success"
-            android:onClick="toastSuccess"/>
+            android:onClick="toastSuccess"
+            android:layout_marginTop="4dp"
+            />
 
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="error"
-            android:onClick="toastError"/>
+            android:onClick="toastError"
+            android:layout_marginTop="4dp"
+            />
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="100dp"
             >
 
         <Button
@@ -62,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="success"
                 android:onClick="success"
+                android:layout_marginLeft="4dp"
                 />
 
         <Button
@@ -69,6 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="error"
                 android:onClick="error"
+                android:layout_marginLeft="4dp"
                 />
 
     </LinearLayout>

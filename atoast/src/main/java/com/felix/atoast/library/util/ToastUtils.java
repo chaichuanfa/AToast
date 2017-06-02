@@ -14,11 +14,11 @@ public class ToastUtils {
     private ToastUtils() {
     }
 
-    public static Drawable getDrawableFrame(@ColorInt int tintColor) {
+    public static Drawable getDrawableFrame(Context mContext, @ColorInt int tintColor) {
 
         GradientDrawable toastDrawable = new GradientDrawable();
         toastDrawable.setColor(tintColor);
-        toastDrawable.setCornerRadius(48);
+        toastDrawable.setCornerRadius(ScreenUtils.dip2px(mContext, 24));
         return toastDrawable;
     }
 

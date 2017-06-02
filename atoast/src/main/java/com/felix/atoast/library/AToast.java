@@ -1,6 +1,7 @@
 package com.felix.atoast.library;
 
 
+import com.felix.atoast.library.config.AToastConfig;
 import com.felix.atoast.library.util.ToastUtils;
 
 import android.annotation.SuppressLint;
@@ -20,29 +21,23 @@ import android.widget.Toast;
 @SuppressLint("InflateParams")
 public class AToast {
 
-    private static final
     @ColorInt
-    int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
+    private static int DEFAULT_TEXT_COLOR = Color.parseColor("#FFFFFF");
 
-    private static final
     @ColorInt
-    int NORMAL_COLOR = Color.parseColor("#70000000");
+    private static int NORMAL_COLOR = Color.parseColor("#70000000");
 
-    private static final
     @ColorInt
-    int ERROR_COLOR = Color.parseColor("#D50000");
+    private static int ERROR_COLOR = Color.parseColor("#D50000");
 
-    private static final
     @ColorInt
-    int INFO_COLOR = Color.parseColor("#3F51B5");
+    private static int INFO_COLOR = Color.parseColor("#3F51B5");
 
-    private static final
     @ColorInt
-    int SUCCESS_COLOR = Color.parseColor("#388E3C");
+    private static int SUCCESS_COLOR = Color.parseColor("#388E3C");
 
-    private static final
     @ColorInt
-    int WARNING_COLOR = Color.parseColor("#FFA900");
+    private static int WARNING_COLOR = Color.parseColor("#FFA900");
 
 
     private static Context mContext;
@@ -52,11 +47,40 @@ public class AToast {
 
     /**
      * 在Application onCreate中初始化
-     * @param context
      */
     public static void onInit(Context context) {
         if (mContext == null) {
             mContext = context.getApplicationContext();
+        }
+    }
+
+    /**
+     * 在Application onCreate中初始化
+     *
+     * @param config toast 背景颜色
+     */
+    public static void onInit(Context context, AToastConfig config) {
+        if (mContext == null) {
+            mContext = context.getApplicationContext();
+        }
+        if (config != null) {
+            DEFAULT_TEXT_COLOR = config.getText_color() != 0 ? config.getText_color()
+                    : DEFAULT_TEXT_COLOR;
+
+            NORMAL_COLOR = config.getNormal_color() != 0 ? config.getNormal_color()
+                    : NORMAL_COLOR;
+
+            ERROR_COLOR = config.getError_color() != 0 ? config.getError_color()
+                    : ERROR_COLOR;
+
+            INFO_COLOR = config.getInfo_color() != 0 ? config.getInfo_color()
+                    : INFO_COLOR;
+
+            SUCCESS_COLOR = config.getSuccess_color() != 0 ? config.getSuccess_color()
+                    : SUCCESS_COLOR;
+
+            WARNING_COLOR = config.getWarning_color() != 0 ? config.getWarning_color()
+                    : WARNING_COLOR;
         }
     }
 
@@ -178,9 +202,9 @@ public class AToast {
         Drawable drawableFrame;
 
         if (shouldTint) {
-            drawableFrame = ToastUtils.getDrawableFrame(tintColor);
+            drawableFrame = ToastUtils.getDrawableFrame(mContext, tintColor);
         } else {
-            drawableFrame = ToastUtils.getDrawableFrame(NORMAL_COLOR);
+            drawableFrame = ToastUtils.getDrawableFrame(mContext, NORMAL_COLOR);
         }
         ToastUtils.setBackground(toastLayout, drawableFrame);
 

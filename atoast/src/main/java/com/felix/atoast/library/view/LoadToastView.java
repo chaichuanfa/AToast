@@ -20,9 +20,6 @@ import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
 
-/**
-* Created by Wannes2 on 23/04/2015.
-*/
 public class LoadToastView extends ImageView {
 
     private String mText = "";
