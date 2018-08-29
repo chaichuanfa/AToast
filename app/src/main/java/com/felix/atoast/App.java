@@ -16,5 +16,7 @@ public class App extends Application {
         super.onCreate();
 
         AToast.onInit(this);
+//        AToast.onInit(this, new AToastConfig.Builder().error_color(Color.RED).info_color(Color.BLUE)
+//                .normal_color(Color.GRAY).text_color(Color.WHITE).build());
     }
 }

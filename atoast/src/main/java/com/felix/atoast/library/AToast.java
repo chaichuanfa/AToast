@@ -197,8 +197,8 @@ public class AToast {
         final View toastLayout = ((LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE))
                 .inflate(R.layout.toast_layout, null);
-        final ImageView toastIcon = (ImageView) toastLayout.findViewById(R.id.toast_icon);
-        final TextView toastTextView = (TextView) toastLayout.findViewById(R.id.toast_text);
+        final ImageView toastIcon = toastLayout.findViewById(R.id.toast_icon);
+        final TextView toastTextView = toastLayout.findViewById(R.id.toast_text);
         Drawable drawableFrame;
 
         if (shouldTint) {

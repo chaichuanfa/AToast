@@ -15,10 +15,9 @@ public class ToastUtils {
     }
 
     public static Drawable getDrawableFrame(Context mContext, @ColorInt int tintColor) {
-
         GradientDrawable toastDrawable = new GradientDrawable();
         toastDrawable.setColor(tintColor);
-        toastDrawable.setCornerRadius(ScreenUtils.dip2px(mContext, 24));
+        toastDrawable.setCornerRadius(ScreenUtils.dip2px(mContext, 20));
         return toastDrawable;
     }
 

@@ -13,14 +13,14 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.TypedValue;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
 
 
-public class LoadToastView extends ImageView {
+public class LoadToastView extends AppCompatImageView {
 
     private String mText = "";
 
