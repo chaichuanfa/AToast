@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AToast.iml" filepath="$PROJECT_DIR$/AToast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AToast-app.iml" filepath="$PROJECT_DIR$/app/AToast-app.iml" group="AToast/app" />
+      <module fileurl="file://$PROJECT_DIR$/atoast/AToast-atoast.iml" filepath="$PROJECT_DIR$/atoast/AToast-atoast.iml" group="AToast/atoast" />
+      <module fileurl="file://$PROJECT_DIR$/AndroidStudioProjects-AToast.iml" filepath="$PROJECT_DIR$/AndroidStudioProjects-AToast.iml" group="AToast" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/atoast/atoast.iml" filepath="$PROJECT_DIR$/atoast/atoast.iml" />
     </modules>

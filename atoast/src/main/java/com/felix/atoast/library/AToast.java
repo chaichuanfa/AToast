@@ -2,12 +2,14 @@ package com.felix.atoast.library;
 
 
 import com.felix.atoast.library.config.AToastConfig;
+import com.felix.atoast.library.config.SafeToastContext;
 import com.felix.atoast.library.util.ToastUtils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
@@ -17,6 +19,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.Field;
 
 @SuppressLint("InflateParams")
 public class AToast {
@@ -223,6 +227,7 @@ public class AToast {
 
         currentToast.setView(toastLayout);
         currentToast.setDuration(duration);
+        setContextCompat(currentToast.getView(), new SafeToastContext(mContext, currentToast));
         currentToast.show();
     }
 
@@ -238,4 +243,15 @@ public class AToast {
         return lt;
     }
 
+    private static void setContextCompat(@NonNull View view, @NonNull Context context) {
+        if (Build.VERSION.SDK_INT == 25) {
+            try {
+                Field field = View.class.getDeclaredField("mContext");
+                field.setAccessible(true);
+                field.set(view, context);
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        }
+    }
 }
