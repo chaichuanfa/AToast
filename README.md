@@ -4,7 +4,7 @@
 
 统一Toast样式,自定义Error、Info、Success、Warning、Normal样式,扩展loading toast
 
-## ScreenShot ##
+## ScreenShot
 
 ![screenshot][1]
 
